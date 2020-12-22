@@ -1,26 +1,29 @@
-var Gamestate=0, database;
-var playercount,form,player,game;
-var allplayers;
+var canvas, backgroundImage;
+
+var gameState = 0;
+var playerCount;
+var allPlayers;
+var distance = 0;
+var database;
+
+var form, player, game;
+var cars,car1,car2,car3,car4;
 
 function setup(){
+  canvas = createCanvas(displayWidth-20,displayHeight-30);
   database = firebase.database();
-  createCanvas(500,500);
-
-  game=new Game();
+  game = new Game();
   game.getState();
   game.start();
 }
 
+
 function draw(){
-  background("white");
-  if(playercount==4){
-    game.update(1)
+  if(playerCount === 4){
+    game.update(1);
   }
-   if(Gamestate==1){
-     clear ();
-     game.play();
-
-   } 
-  
+  if(gameState === 1){
+    clear();
+    game.play();
+  }
 }
-
